@@ -11,8 +11,9 @@ EOF
 
 for dir in *; do
   if [ -d "$dir" ]; then
+    jobid="${dir//./-}"
     cat << EOF >> .github/workflows/ci.yml
-  build_$dir:
+  build_$jobid:
     name: $dir
     runs-on: ubuntu-latest
     steps:
